@@ -23,10 +23,6 @@ export default class GameScene extends Phaser.Scene {
   create() {
     gameState.background = this.add.tileSprite(200, 300, 760, 600, 'track');
 
-    // const platforms = this.physics.add.staticGroup();
-
-    // platforms.create(240, 615, 'platform');
-
     gameState.player = this.physics.add.sprite(240, 572, 'racer').setScale(2.0);
 
     gameState.player.body.setAllowGravity(false);
@@ -34,8 +30,6 @@ export default class GameScene extends Phaser.Scene {
     gameState.scoreText = this.add.text(30, 30, 'Score: 0', { fontSize: '30px', fill: '#000000' });
 
     gameState.player.setCollideWorldBounds(true);
-
-    // this.physics.add.collider(gameState.player, platforms);
 
     gameState.cursors = this.input.keyboard.createCursorKeys();
 
@@ -61,17 +55,11 @@ export default class GameScene extends Phaser.Scene {
     }
 
     gameState.carGenLoop = this.time.addEvent({
-      delay: 1200,
+      delay: 1000,
       callback: carGen,
       callbackScope: this,
       loop: true,
     });
-
-    // if (cars.y > 620) {
-    //   gameState.score += 1;
-    //   gameState.scoreText.setText(`Score: ${gameState.score}`);
-    // }
-
 
     this.physics.add.collider(gameState.player, gameState.cars, () => {
       gameState.carGenLoop.destroy();
@@ -106,12 +94,12 @@ export default class GameScene extends Phaser.Scene {
       gameState.player.setVelocityY(0);
     }
 
-    if (!Number.isInteger(gameState.score / 100)) {
+    if (!Number.isInteger(gameState.score / 15)) {
       gameState.counter = 0;
     }
 
     if (gameState.score !== 0
-      && Number.isInteger(gameState.score / 100)
+      && Number.isInteger(gameState.score / 15)
       && gameState.counter === 0) {
       this.physics.world.gravity.y += 50;
 
