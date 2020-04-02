@@ -11,6 +11,8 @@
     "@babel/preset-env": "^7.9.0",
     "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "file-loader": "^6.0.0",
     "jest": "^25.2.4",
     "url-loader": "^4.0.0",
@@ -19,9 +21,9 @@
   },
   "scripts": {
     "test": "jest",
-    "watch": "jest --watch",
+    "test-watch": "jest --watch",
     "webpack": "webpack",
-    "webpack-watch": "webpack --watch"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
